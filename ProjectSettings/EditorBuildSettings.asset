@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 6c82f464e639c57448ff2774c3a6f89d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/DarkSoulSample.unity
+    guid: eab9decf4010c7c44abd9604f83ba9a8
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: d3f337f8c4b849e40840523c9aba7b03, type: 2}
