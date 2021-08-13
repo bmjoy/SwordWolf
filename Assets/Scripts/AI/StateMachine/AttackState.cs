@@ -14,11 +14,12 @@ namespace Asakuma
         bool willDoComboOnNextAttack = false;
         public bool hasPerformedAttack = false;
 
-        //  Select one of our many attacks based on attack scores
-        //  If the selected attack is not able to be used because of bad angle or distance, select a new attack
-        //  if the attack is viable, stop our movement and attack our target
-        //  Set our recovery timer to the attacks recovery time
-        //  Return the combat stance state
+        //  攻撃スコアに基づいて、多数の攻撃の中から1つを選択する
+        //  選んだ攻撃が、角度や距離が悪くて使えない場合は、新たな攻撃を選ぶ
+        //  攻撃が可能な場合、動きを止めてターゲットを攻撃する
+        //  攻撃の回復時間に合わせて、回復タイマーを設定する
+        //  戦闘態勢の状態を返す
+        
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
@@ -44,10 +45,10 @@ namespace Asakuma
 
             if (willDoComboOnNextAttack && hasPerformedAttack)
             {
-                return this; //  goes back up to preform the combo
+                return this; //  コンボを決めるために上に戻る
             }
 
-            return rotateTowardsTargetState;
+            return rotateTowardsTargetState;    
         }
 
 
