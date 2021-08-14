@@ -9,10 +9,6 @@ namespace Asakuma
         public CombatStanceState combatStanceState;
         public RotateTowardsTargetState rotateTowardsTargetState;
 
-        //  Chase the target
-        //  If within attack range, switch to combat stance state
-        //  If target is out of range, return this state and continue to chase target
-
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {

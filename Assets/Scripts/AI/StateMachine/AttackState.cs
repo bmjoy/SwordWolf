@@ -14,13 +14,6 @@ namespace Asakuma
         bool willDoComboOnNextAttack = false;
         public bool hasPerformedAttack = false;
 
-        //  攻撃スコアに基づいて、多数の攻撃の中から1つを選択する
-        //  選んだ攻撃が、角度や距離が悪くて使えない場合は、新たな攻撃を選ぶ
-        //  攻撃が可能な場合、動きを止めてターゲットを攻撃する
-        //  攻撃の回復時間に合わせて、回復タイマーを設定する
-        //  戦闘態勢の状態を返す
-        
-
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -90,7 +83,6 @@ namespace Asakuma
         {
             float comboChance = Random.Range(0, 100);
 
-            //  comboLikelyHoodの値が大きいほどコンボしやすい
             if (enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood)
             {
                 if (currentAttack.comboAction != null)

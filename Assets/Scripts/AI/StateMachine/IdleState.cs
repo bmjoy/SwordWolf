@@ -34,9 +34,6 @@ namespace Asakuma
             }
             #endregion
 
-            //  look for a potential target
-            //  switch to the pursue target if target is found
-            //  If not return this state 
 
             #region Handle Switching To Next State
             if (enemyManager.currentTarget != null)
