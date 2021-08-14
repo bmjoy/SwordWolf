@@ -15,10 +15,6 @@ namespace Asakuma
         protected float horizontalMovementValue = 0;
 
 
-        //  If in attack range return attack State
-        //  If we are in a cool down after attacking, return this state and continue circing player
-        //  If the player runs out of range return the pursue target state
-
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -45,7 +41,7 @@ namespace Asakuma
                 DecideCirclingAction(enemyAnimatorManager);
             }
 
-            HandleRotateTowardsTarget(enemyManager);  //UŒ‚Œã‚È‚º‚©‰ñ“]‚·‚é‚Ì‚Å”ñ•\¦
+            HandleRotateTowardsTarget(enemyManager);  
 
             //  Check for attack range
             if (enemyManager.currentRecoveryTime <= 0 && attackState.currentAttack != null)
@@ -64,7 +60,7 @@ namespace Asakuma
 
         protected void HandleRotateTowardsTarget(EnemyManager enemyManager)
         {
-            if (enemyManager.isPreformingAction)    //! rotate manually
+            if (enemyManager.isPreformingAction)    
             {
                 Vector3 direction = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
                 direction.y = 0;
@@ -78,7 +74,7 @@ namespace Asakuma
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
                 enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemyManager.rotationSpeed / Time.deltaTime);
             }
-            else    //! rotate with pathfinding (navmesh)
+            else    
             {
                 Vector3 relativeDirection = transform.InverseTransformDirection(enemyManager.navmeshAgent.desiredVelocity);
                 Vector3 targetVelocity = enemyManager.enemyRigidBody.velocity;
@@ -92,8 +88,6 @@ namespace Asakuma
 
         protected void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager)
         {
-            //  circling with only forward vertical movement
-            //  circle with running
             WalkAroundTarget(enemyAnimatorManager);
         }
 
