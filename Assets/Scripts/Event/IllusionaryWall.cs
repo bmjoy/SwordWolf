@@ -24,13 +24,6 @@ namespace Asakuma
             }
         }
 
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.tag == "Player")
-        //    {
-        //        wallHasBeenHit = true;
-        //    }
-        ////}
 
         public void FadeIllusionaryWall()
         {

@@ -12,9 +12,9 @@ namespace Asakuma
         public EnemyBossManager boss;
 
 
-        public bool bossFightIsActive;  //  Is currently fighting boss
-        public bool bossHasBeenAwakened;    //  woke the boss watched cutscene but dies during fight
-        public bool bossHasBeenDefeated;    //  boss has been defeated
+        public bool bossFightIsActive;  
+        public bool bossHasBeenAwakened;    
+        public bool bossHasBeenDefeated;   
 
         private void Awake()
         {
