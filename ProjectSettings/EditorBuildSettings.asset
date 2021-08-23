@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartMenu.unity
-    guid: 6c82f464e639c57448ff2774c3a6f89d
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/StartMenuSample.unity
+    guid: bd21f313cb8a3964b822dc98ef120a27
   - enabled: 1
     path: Assets/Scenes/DarkSoulSample.unity
     guid: eab9decf4010c7c44abd9604f83ba9a8
