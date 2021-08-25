@@ -41,6 +41,8 @@ namespace Asakuma
         public bool inventoryFlag;
         public float rollInputTimer;
 
+        public bool pause_Game;
+
         public Transform criticalAttackRayCastStartPoint;
 
         PlayerControls inputActions;

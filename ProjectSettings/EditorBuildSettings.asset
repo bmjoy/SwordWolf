@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/RedirectLevel.unity
     guid: 4520f797011c2864aadf798723654996
   - enabled: 1
-    path: Assets/Scenes/DarkSoulSample.unity
-    guid: eab9decf4010c7c44abd9604f83ba9a8
+    path: Assets/Scenes/Temple_1 1.unity
+    guid: da6b76739146bf749bc739c288219786
   - enabled: 1
     path: Assets/Scenes/CreditLevel.unity
     guid: 9dee493e2c865b64887ffccf2061b790

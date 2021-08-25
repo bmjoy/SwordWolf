@@ -692,6 +692,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""World Actions"",
+            ""id"": ""7d0e6120-7c69-435f-94e7-9cce2626ab36"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""078cf06a-8c19-4802-8167-71c5ae4e977b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4ca208b5-4124-4f40-80ad-3cb10689434e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9484cad0-ce78-4f5b-97a9-6c664741f2b7"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -722,6 +760,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerQuickSlots_DPadDown = m_PlayerQuickSlots.FindAction("D-Pad Down", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadLeft = m_PlayerQuickSlots.FindAction("D-Pad Left", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadRight = m_PlayerQuickSlots.FindAction("D-Pad Right", throwIfNotFound: true);
+        // World Actions
+        m_WorldActions = asset.FindActionMap("World Actions", throwIfNotFound: true);
+        m_WorldActions_Pause = m_WorldActions.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1002,6 +1043,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public PlayerQuickSlotsActions @PlayerQuickSlots => new PlayerQuickSlotsActions(this);
+
+    // World Actions
+    private readonly InputActionMap m_WorldActions;
+    private IWorldActionsActions m_WorldActionsActionsCallbackInterface;
+    private readonly InputAction m_WorldActions_Pause;
+    public struct WorldActionsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public WorldActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_WorldActions_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_WorldActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(WorldActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IWorldActionsActions instance)
+        {
+            if (m_Wrapper.m_WorldActionsActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_WorldActionsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_WorldActionsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_WorldActionsActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_WorldActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public WorldActionsActions @WorldActions => new WorldActionsActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -1030,5 +1104,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnDPadDown(InputAction.CallbackContext context);
         void OnDPadLeft(InputAction.CallbackContext context);
         void OnDPadRight(InputAction.CallbackContext context);
+    }
+    public interface IWorldActionsActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }
