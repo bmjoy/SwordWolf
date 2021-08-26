@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Asakuma
 {
     public class PlayerStats : CharacterStats
     {
         PlayerManager playerManager;
+        GameOver gameOver;
 
         HealthBar healthBar;
         StaminaBar staminaBar;
         FocusPointsBar focusPointsBar;
         PlayerAnimatorManager animatorHandler;
 
+        public GameObject gameOverUI;
+
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
+        public bool canDamage;
 
         private void Awake()
         {
@@ -23,6 +29,9 @@ namespace Asakuma
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointsBar = FindObjectOfType<FocusPointsBar>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+
+            gameOver = FindObjectOfType<GameOver>();
+            canDamage = true;
         }
 
         void Start()
@@ -40,6 +49,8 @@ namespace Asakuma
             currentFocusPoints = maxFocusPoints;
             focusPointsBar.SetMaxFocusPoints(maxFocusPoints);
             focusPointsBar.SetCurrentFocusPoints(currentFocusPoints);
+
+            gameOverUI.SetActive(false);
         }
 
 
@@ -66,9 +77,12 @@ namespace Asakuma
         {
             if (playerManager.isInvulnerable)
                 return;
+            if (!canDamage || currentHealth <= 0)
+                return;
 
             base.TakeDamage(damage, damageAnimation = "Damage_01");
-
+            canDamage = false;
+            StartCoroutine(WaitForDamage());
             healthBar.SetCurrentHealth(currentHealth);
             animatorHandler.PlayTargetAnimation(damageAnimation, true);
 
@@ -77,13 +91,19 @@ namespace Asakuma
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("Dying", true);
                 isDead = true;
+
+                gameOver.IsGameOver();
             }
         }
 
 
         public void TakeDamageNoAnimation(int damage)
         {
+            if (!canDamage || currentHealth <= 0)
+                return;
+
             currentHealth = currentHealth - damage;
+            StartCoroutine(WaitForDamage());
 
             if (currentHealth <= 0)
             {
@@ -92,6 +112,11 @@ namespace Asakuma
             }
         }
 
+        IEnumerator WaitForDamage()
+        {
+            yield return new WaitForSeconds(1f);
+            canDamage = true;
+        }
 
         public void TakeStaminaDamage(int damage)
         {
