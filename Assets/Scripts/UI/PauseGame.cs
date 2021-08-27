@@ -12,6 +12,11 @@ namespace Asakuma
         public GameObject pauseMenu;
         public AudioSource pauseJingle;
 
+        private void Awake()
+        {
+            pauseMenu.SetActive(false);
+        }
+
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick button 6"))

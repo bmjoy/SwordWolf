@@ -8,7 +8,8 @@ namespace Asakuma
 
     public class RedirectToLevel : MonoBehaviour
     {
-        public static int redirectToLevel;
+        public static int redirectToLevel = 3;
+        public static int nextLevel;
 
         void Update()
         {

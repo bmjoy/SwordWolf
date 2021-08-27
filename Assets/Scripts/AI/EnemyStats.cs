@@ -11,9 +11,9 @@ namespace Asakuma
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyBossManager enemyBossManager;
 
+        public LevelComplete levelComplete;
         public UIEnemyHealthBar enemyHealthBar;
         public int soulsAwardedOnDeath = 50;
-
         public bool isBoss;
 
         private void Awake()
@@ -23,6 +23,7 @@ namespace Asakuma
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
+            levelComplete = FindObjectOfType<LevelComplete>();
         }
 
         void Start()
@@ -69,8 +70,7 @@ namespace Asakuma
         {
             base.TakeDamage(damage, damageAnimation = "Damage_01");
 
-            //if (isDead)
-            //    return;
+           
             if (!isBoss)
             {
                 enemyHealthBar.SetHealth(currentHealth);
@@ -86,6 +86,7 @@ namespace Asakuma
             if (currentHealth <= 0)
             {
                 HandleDeath();
+                
             }
         }
 
@@ -94,6 +95,15 @@ namespace Asakuma
             currentHealth = 0;
             enemyAnimatorManager.PlayTargetAnimation("Dying", true);
             isDead = true;
+            if (isBoss)
+            {
+                LevelCompleted();
+            }
+        }
+
+        public void LevelCompleted()
+        {
+            levelComplete.BossDefeated();
         }
     }
 }

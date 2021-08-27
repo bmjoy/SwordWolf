@@ -8,12 +8,14 @@ namespace Asakuma
 {
     public class GameOver : MonoBehaviour
     {
+        //public bool isGameOver = false;
         public GameObject gameOverUI;
+        public AudioSource levelMusic;
         public AudioSource gameOverAudio;
 
         private void Awake()
         {
-            
+            gameOverUI.SetActive(false);
         }
         void Update()
         {
@@ -22,16 +24,21 @@ namespace Asakuma
 
         public void IsGameOver()
         {
+            //isGameOver = true;
             Time.timeScale = 0.7f;
-            gameOverUI.SetActive(true);
+            levelMusic.Pause();
             gameOverAudio.Play();
-            StartCoroutine(GameOverTimeScale());
+            Cursor.visible = true;
+            StartCoroutine(GameOverTimeDelay());
         }
 
-        IEnumerator GameOverTimeScale()
+        IEnumerator GameOverTimeDelay()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
+            gameOverUI.SetActive(true);
             Time.timeScale = 0;
+
+            //yield return new WaitForSeconds(2.5f);
         }
     }
 }
