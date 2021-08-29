@@ -15,6 +15,7 @@ namespace Asakuma
         public CharacterStats currentTarget;
         public NavMeshAgent navmeshAgent;
         public Rigidbody enemyRigidBody;
+        public AudioSource damageSE;
 
 
         public bool isPreformingAction;

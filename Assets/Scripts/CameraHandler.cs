@@ -249,11 +249,12 @@ namespace Asakuma
             float shortestDistanceOfLeftTarget = -Mathf.Infinity;
             float shortestDistanceOfRightTarget = Mathf.Infinity;
 
-            Collider[] colliders = Physics.OverlapSphere(targetTransform.position, 26); //半径26ユニット
+            Collider[] colliders = Physics.OverlapSphere(targetTransform.position, 5); //半径26ユニット
 
             for (int i = 0; i < colliders.Length; i++)
             {
                 CharacterManager character = colliders[i].GetComponent<CharacterManager>();
+                Debug.Log(colliders[i]);
 
                 if (character != null)
                 {
@@ -270,7 +271,7 @@ namespace Asakuma
 
                             if (hit.transform.gameObject.layer == environmentLayer)
                             {
-                                Debug.Log("えんば");
+                                Debug.Log("environmentLayer");
                             }
                             else
                             {

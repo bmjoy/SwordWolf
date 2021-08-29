@@ -15,6 +15,7 @@ namespace Asakuma
         public UIEnemyHealthBar enemyHealthBar;
         public int soulsAwardedOnDeath = 50;
         public bool isBoss;
+        public bool isDamaged = false;
 
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace Asakuma
         }
 
 
+
         private int SetMaxHealthFromHealthLevel()
         {
             maxHealth = healthLevel * 10;
@@ -44,8 +46,12 @@ namespace Asakuma
 
         public void TakeDamageNoAnimation(int damage)
         {
+            if (!isDamaged)
+                isDamaged = true;
+
             currentHealth = currentHealth - damage;
             Debug.Log(currentHealth);
+            enemyManager.damageSE.Play();
 
             if (!isBoss)
             {
@@ -68,9 +74,14 @@ namespace Asakuma
 
         public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
+            if (!isDamaged)
+                isDamaged = true;
+            if (isDead)
+                return;
+
             base.TakeDamage(damage, damageAnimation = "Damage_01");
 
-           
+
             if (!isBoss)
             {
                 enemyHealthBar.SetHealth(currentHealth);
@@ -80,13 +91,12 @@ namespace Asakuma
                 enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
 
             }
-
             enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+            enemyManager.damageSE.Play();
 
             if (currentHealth <= 0)
             {
                 HandleDeath();
-                
             }
         }
 

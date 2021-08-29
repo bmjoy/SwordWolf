@@ -25,13 +25,13 @@ namespace Asakuma
         {
             bossFightIsActive = true;
             bossHasBeenAwakened = true;
-            bossHealthBar.SetUIHealthBarToActive();
 
             //  activate fog wall
             foreach(var fogWall in fogWalls)
             {
                 fogWall.ActivateFogWall();
             }
+            StartCoroutine(BossHealthBarActive());
         }
 
         public void BossHasBeenDefeated()
@@ -44,6 +44,12 @@ namespace Asakuma
             {
                 fogWall.DeactivateFogWall();
             }
+        }
+
+        IEnumerator BossHealthBarActive()
+        {
+            yield return new WaitForSeconds(5);
+            bossHealthBar.SetUIHealthBarToActive();
         }
     }
 }

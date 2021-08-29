@@ -7,6 +7,7 @@ namespace Asakuma
     public class AmbushState : State
     {
         public PursueTargetState pursueTargetState;
+        public PlayerStats player;
 
         public bool isSleeping;
         public float detectionRadius = 2;
@@ -18,6 +19,9 @@ namespace Asakuma
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
+            if (enemyStats.isDead == true)
+                return this;
+
             if (isSleeping && enemyManager.isInteracting == false)
             {
                 enemyAnimatorManager.PlayTargetAnimation(sleepAnimation, true);
@@ -51,6 +55,11 @@ namespace Asakuma
 
             if (enemyManager.currentTarget != null)
             {
+                return pursueTargetState;
+            }
+            else if (enemyStats.isDamaged && enemyManager.currentTarget == null)
+            {
+                enemyManager.currentTarget = player;
                 return pursueTargetState;
             }
             else

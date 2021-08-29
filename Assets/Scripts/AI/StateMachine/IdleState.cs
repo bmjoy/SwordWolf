@@ -7,6 +7,7 @@ namespace Asakuma
     public class IdleState : State
     {
         public PursueTargetState pursueTargetState;
+        public PlayerStats player;
 
         public LayerMask detectionLayer;
 
@@ -38,6 +39,11 @@ namespace Asakuma
             #region Handle Switching To Next State
             if (enemyManager.currentTarget != null)
             {
+                return pursueTargetState;
+            }
+            else if (enemyStats.isDamaged && enemyManager.currentTarget == null)
+            {
+                enemyManager.currentTarget = player;
                 return pursueTargetState;
             }
             else

@@ -10,17 +10,15 @@ namespace Asakuma
     {
         PlayerManager playerManager;
         GameOver gameOver;
-
         HealthBar healthBar;
         StaminaBar staminaBar;
         FocusPointsBar focusPointsBar;
         PlayerAnimatorManager animatorHandler;
 
-        public GameObject gameOverUI;
-
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
         public bool canDamage;
+        [SerializeField]private AudioSource damageSE;
 
         private void Awake()
         {
@@ -50,7 +48,6 @@ namespace Asakuma
             focusPointsBar.SetMaxFocusPoints(maxFocusPoints);
             focusPointsBar.SetCurrentFocusPoints(currentFocusPoints);
 
-            gameOverUI.SetActive(false);
         }
 
 
@@ -82,9 +79,10 @@ namespace Asakuma
 
             base.TakeDamage(damage, damageAnimation = "Damage_01");
             canDamage = false;
-            StartCoroutine(WaitForDamage());
             healthBar.SetCurrentHealth(currentHealth);
             animatorHandler.PlayTargetAnimation(damageAnimation, true);
+            damageSE.Play();
+            StartCoroutine(WaitForDamage());
 
             if (currentHealth <= 0)
             {
@@ -103,6 +101,7 @@ namespace Asakuma
                 return;
 
             currentHealth = currentHealth - damage;
+            damageSE.Play();
             StartCoroutine(WaitForDamage());
 
             if (currentHealth <= 0)

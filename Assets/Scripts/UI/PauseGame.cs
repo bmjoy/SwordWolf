@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 namespace Asakuma
 {
@@ -26,7 +27,7 @@ namespace Asakuma
                     pauseJingle.Play();
                     pauseMenu.SetActive(true);
 
-                    Time.timeScale = 0;
+                    //Time.timeScale = 0;
                     gamePaused = true;
                     Cursor.visible = true;
                     levelMusic.Pause();
@@ -39,7 +40,7 @@ namespace Asakuma
                     levelMusic.UnPause();
                     Cursor.visible = false;
                     gamePaused = false;
-                    Time.timeScale = 1;
+                    //Time.timeScale = 1;
 
                 }
             }

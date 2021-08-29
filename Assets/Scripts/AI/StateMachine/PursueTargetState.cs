@@ -8,6 +8,7 @@ namespace Asakuma
     {
         public CombatStanceState combatStanceState;
         public RotateTowardsTargetState rotateTowardsTargetState;
+        
 
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
@@ -17,13 +18,15 @@ namespace Asakuma
             float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
 
 
-            HandleRotateTowardsTarget(enemyManager);
+            HandleRotateTowardsTarget(enemyManager, enemyStats);
 
 
             //if (viewableAngle > 65 || viewableAngle < -65)
             //    return rotateTowardsTargetState;
 
             if (enemyManager.isInteracting)
+                return this;
+            if (enemyStats.isDead)
                 return this;
 
             if (enemyManager.isPreformingAction)
@@ -51,8 +54,11 @@ namespace Asakuma
         }
 
 
-        private void HandleRotateTowardsTarget(EnemyManager enemyManager)
+        private void HandleRotateTowardsTarget(EnemyManager enemyManager, EnemyStats enemyStats)
         {
+            if (enemyStats.isDead)
+                return;
+
             if (enemyManager.isPreformingAction)    //! rotate manually
             {
                 Vector3 direction = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
