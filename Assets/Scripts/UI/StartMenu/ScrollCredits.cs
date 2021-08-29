@@ -16,7 +16,7 @@ namespace Asakuma
         {
             yield return new WaitForSeconds(0.5f);
             creditsRun.SetActive(true);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(8f);
             SceneManager.LoadScene(1);
         }
 

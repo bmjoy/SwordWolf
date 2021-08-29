@@ -19,7 +19,7 @@ namespace Asakuma
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick button 6"))
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick button 7"))
             {
                 if (gamePaused == false)
                 {

@@ -10,6 +10,7 @@ namespace Asakuma
     {
         public AudioSource levelMusic;
         public AudioSource levelCompleteJingle;
+        public GameObject levelCompleteUI;
         public GameObject victoryText;
         public GameObject fadeOut;
 
@@ -17,12 +18,13 @@ namespace Asakuma
 
         private void Awake()
         {
-            victoryText.SetActive(false);
+            levelCompleteUI.SetActive(false);
             enemyStats = GetComponent<EnemyStats>();
         }
 
         public void BossDefeated()
         {
+            levelCompleteUI.SetActive(true);
             StartCoroutine(DefeatedBoss());
             StartCoroutine(FadeScreen());
         }

@@ -25,7 +25,7 @@ namespace Asakuma
         public void IsGameOver()
         {
             //isGameOver = true;
-            Time.timeScale = 0.7f;
+            //Time.timeScale = 0.7f;
             levelMusic.Pause();
             gameOverAudio.Play();
             Cursor.visible = true;
@@ -34,7 +34,7 @@ namespace Asakuma
 
         IEnumerator GameOverTimeDelay()
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(3f);
             gameOverUI.SetActive(true);
             Time.timeScale = 0;
 
