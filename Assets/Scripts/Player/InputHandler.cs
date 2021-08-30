@@ -80,6 +80,7 @@ namespace Asakuma
 
         public void OnEnable()
         {
+            
             if (inputActions == null)
             {
                 inputActions = new PlayerControls();
@@ -105,7 +106,7 @@ namespace Asakuma
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOn_Input = true;
 
-                inputActions.PlayerActions.Y.performed += inputActions => y_Input = true;
+                inputActions.PlayerActions.Y.performed += i => y_Input = true;
                 inputActions.PlayerActions.CriticalAttack.performed += i => criticalAttack_Input = true;
             }
 
@@ -313,7 +314,7 @@ namespace Asakuma
 
         private void HandleCriticalAttackInput()
         {
-            //Debug.Log("ca");
+           Debug.Log(criticalAttack_Input);
             if (criticalAttack_Input)
             {
                 Debug.Log("criticalAttackInput");

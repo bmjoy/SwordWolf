@@ -15,10 +15,11 @@ namespace Asakuma
         FocusPointsBar focusPointsBar;
         PlayerAnimatorManager animatorHandler;
 
-        public float staminaRegenerationAmount = 1;
-        public float staminaRegenTimer = 0;
-        public bool canDamage;
-        [SerializeField]private AudioSource damageSE;
+        [SerializeField] private float staminaRegenerationAmount = 1;
+        [SerializeField] private float staminaRegenTimer = 0;
+        [SerializeField] private bool canDamage = true;
+        [SerializeField] private float continuousDamageTime = 0.5f;
+        [SerializeField] private AudioSource damageSE;
 
         private void Awake()
         {
@@ -29,7 +30,6 @@ namespace Asakuma
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
 
             gameOver = FindObjectOfType<GameOver>();
-            canDamage = true;
         }
 
         void Start()
@@ -113,7 +113,7 @@ namespace Asakuma
 
         IEnumerator WaitForDamage()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(continuousDamageTime);
             canDamage = true;
         }
 

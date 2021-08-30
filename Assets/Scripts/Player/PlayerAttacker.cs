@@ -237,11 +237,18 @@ namespace Asakuma
             //! BackStab
             if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, 1f, backStabLayer))
             {
+
                 CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
                 DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
 
+
                 if (enemyCharacterManager != null)
                 {
+                    if (hit.transform.tag == "Enemy")
+                    {
+                        if (hit.transform.GetComponent<CharacterStats>().isDead == true)
+                            return;
+                    }
                     //  Check for team ID(cant backstab friends or yourself)
                     playerManager.transform.position = enemyCharacterManager.backStabCollider.criticalDamageStandPosition.position;
 
@@ -272,6 +279,12 @@ namespace Asakuma
 
                 if (enemyCharacterManager != null && enemyCharacterManager.canBeRiposted)
                 {
+                    if (hit.transform.tag == "Enemy")
+                    {
+                        if (hit.transform.GetComponent<CharacterStats>().isDead == true)
+                            return;
+                    }
+
                     playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamageStandPosition.position;
 
                     Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
