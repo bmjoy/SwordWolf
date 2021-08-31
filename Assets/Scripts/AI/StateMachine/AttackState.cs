@@ -83,7 +83,7 @@ namespace Asakuma
         {
             float comboChance = Random.Range(0, 100);
 
-            if (enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood)
+            if (enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood )
             {
                 if (currentAttack.comboAction != null)
                 {

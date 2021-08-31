@@ -17,6 +17,7 @@ TagManager:
   - Synty Tree
   - Synty Medium Farm
   - Synty Small Farm
+  - Occluder Static
   layers:
   - Default
   - TransparentFX

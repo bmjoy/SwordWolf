@@ -314,7 +314,6 @@ namespace Asakuma
 
         private void HandleCriticalAttackInput()
         {
-           Debug.Log(criticalAttack_Input);
             if (criticalAttack_Input)
             {
                 Debug.Log("criticalAttackInput");

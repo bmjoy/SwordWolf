@@ -17,6 +17,8 @@ namespace Asakuma
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject; //UI popup
         public GameObject itemInteractableGameObject;
+        public AudioSource parrySE;
+
 
         public bool isInteracting;
 

@@ -20,6 +20,7 @@ namespace Asakuma
         [SerializeField] private bool canDamage = true;
         [SerializeField] private float continuousDamageTime = 0.5f;
         [SerializeField] private AudioSource damageSE;
+        [SerializeField] private AudioSource guardSE;
 
         private void Awake()
         {
@@ -74,14 +75,23 @@ namespace Asakuma
         {
             if (playerManager.isInvulnerable)
                 return;
+            if (playerManager.isParrying)
+                return;
             if (!canDamage || currentHealth <= 0)
                 return;
 
             base.TakeDamage(damage, damageAnimation = "Damage_01");
             canDamage = false;
             healthBar.SetCurrentHealth(currentHealth);
-            animatorHandler.PlayTargetAnimation(damageAnimation, true);
-            damageSE.Play();
+
+            if (!playerManager.isBlocking)
+            {
+                animatorHandler.PlayTargetAnimation(damageAnimation, true);
+                damageSE.Play();
+            }
+            else
+                guardSE.Play();
+
             StartCoroutine(WaitForDamage());
 
             if (currentHealth <= 0)
@@ -97,6 +107,10 @@ namespace Asakuma
 
         public void TakeDamageNoAnimation(int damage)
         {
+            if (playerManager.isInvulnerable)
+                return;
+            if (playerManager.isParrying)
+                return;
             if (!canDamage || currentHealth <= 0)
                 return;
 
