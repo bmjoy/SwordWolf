@@ -10,12 +10,14 @@ namespace Asakuma
         PlayerInventory playerInventory;
         WeaponSlotManager weaponSlotManager;
         UIManager uiManager;
+        InputHandler inputHandler;
 
         public Image icon;
         WeaponItem item;
 
         private void Awake()
         {
+            inputHandler = FindObjectOfType<InputHandler>();
             playerInventory = FindObjectOfType<PlayerInventory>();
             weaponSlotManager = FindObjectOfType<WeaponSlotManager>();
             uiManager = FindObjectOfType<UIManager>();
@@ -65,6 +67,9 @@ namespace Asakuma
             }
             else
             {
+                Time.timeScale = 1;
+                uiManager.hudWindow.SetActive(true);
+                inputHandler.inventoryFlag = false;
                 return;
             }
 
@@ -76,6 +81,9 @@ namespace Asakuma
 
             uiManager.equipmentWindowUI.LoadWeaponsOnEquipmentScreen(playerInventory);
             uiManager.ResetAllSelectedSlots();
+            uiManager.hudWindow.SetActive(true);
+            inputHandler.inventoryFlag = false;
+
         }
     }
 }

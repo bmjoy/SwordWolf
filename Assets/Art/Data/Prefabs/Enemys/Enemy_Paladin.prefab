@@ -2940,13 +2940,13 @@ MonoBehaviour:
   rotationSpeed: 15
   maximumAggroRadius: 2
   canDoCombo: 0
-  detectionRadius: 5
-  maximumDetectionAngle: 50
-  minimumDetectionAngle: -50
+  detectionRadius: 10
+  maximumDetectionAngle: 70
+  minimumDetectionAngle: -70
   currentRecoveryTime: 0
   allowAIToPerformCombos: 1
   isPhaseShifting: 0
-  comboLikelyHood: 30
+  comboLikelyHood: 10
 --- !u!114 &8635455072068344331
 MonoBehaviour:
   m_ObjectHideFlags: 0

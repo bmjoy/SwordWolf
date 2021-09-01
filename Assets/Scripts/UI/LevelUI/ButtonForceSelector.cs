@@ -17,17 +17,6 @@ namespace Asakuma
             }
         }
 
-        //void Update()
-        //{
-        //    if (EventSystem.current.currentSelectedGameObject == null)
-        //    {
-        //        if (firstSelected != null && firstSelected.gameObject.activeInHierarchy && firstSelected.interactable)
-        //        {
-        //            EventSystem.current.SetSelectedGameObject(firstSelected.gameObject);
-        //        }
-        //    }
-        //}
-
         private void OnEnable()
         {
             ForceSelect();

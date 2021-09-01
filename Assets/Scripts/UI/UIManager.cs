@@ -67,11 +67,13 @@ namespace Asakuma
         public void OpenSelectWindow()
         {
             selectWindow.SetActive(true);
+            Time.timeScale = 0.5f;
         }
 
         public void CloseSelectWindow()
         {
             selectWindow.SetActive(false);
+            Time.timeScale = 1;
         }
 
         public void CloseAllInventoryWindows()
@@ -79,6 +81,7 @@ namespace Asakuma
             ResetAllSelectedSlots();
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
+            Time.timeScale = 1;
         }
 
         public void ResetAllSelectedSlots()
@@ -87,6 +90,7 @@ namespace Asakuma
             rightHandslot02Selected = false;
             leftHandslot01Selected = false;
             leftHandslot02Selected = false;
+            Time.timeScale = 1;
         }
     }
 }
