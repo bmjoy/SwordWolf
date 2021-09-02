@@ -7,7 +7,6 @@ namespace Asakuma
 {
     public class EnemyManager : CharacterManager
     {
-        EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimationManager;
         EnemyStats enemyStats;
 
@@ -36,12 +35,11 @@ namespace Asakuma
         [Header("A.I Combat Setting")]
         public bool allowAIToPerformCombos;
         public bool isPhaseShifting;
-        public float comboLikelyHood;
+        public float comboLikelyHood;   //ƒRƒ“ƒ{‚µ‚Ä‚­‚éŠm—¦
 
 
         private void Awake()
         {
-            enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
             enemyStats = GetComponent<EnemyStats>();
             enemyRigidBody = GetComponent<Rigidbody>();

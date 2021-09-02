@@ -27,11 +27,6 @@ namespace Asakuma
         WeaponInventorySlot[] weaponInventorySlots;
 
 
-        private void Awake()
-        {
-            //equipmentWindowUI = FindObjectOfType<EquipmentWindowUI>();
-        }
-
         private void Start()
         {
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
