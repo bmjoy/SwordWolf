@@ -7,7 +7,7 @@ namespace Asakuma
     [CreateAssetMenu(menuName = "Spells/Healing Spell")]
     public class HealingSpell : SpellItem
     {
-        public int healAmount;
+        [SerializeField] private int healAmount;
 
         public override void AttemptToCastSpell
             (PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)

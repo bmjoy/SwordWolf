@@ -8,13 +8,13 @@ namespace Asakuma
     public class ProjectileSpell : SpellItem
     {
         [Header("Projectile Damage")]
-        public float baseDamage;
+        [SerializeField] private float baseDamage;
 
         [Header("Projectile Physics")]
-        public float projectileForwardVelocity;
-        public float projectileUpwardVelocity;
-        public float projectileMass;
-        public bool isEffectedByGravity;
+        [SerializeField] private float projectileForwardVelocity;
+        [SerializeField] private float projectileUpwardVelocity;
+        [SerializeField] private float projectileMass;
+        [SerializeField] private bool isEffectedByGravity;
         Rigidbody rigidbody;
 
 

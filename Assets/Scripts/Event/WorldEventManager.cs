@@ -7,7 +7,7 @@ namespace Asakuma
     public class WorldEventManager : MonoBehaviour
     {
         //  fog wall
-        public List<FogWall> fogWalls;
+        [SerializeField] private List<FogWall> fogWalls;
         public UIBossHealthBar bossHealthBar;
         public EnemyBossManager boss;
 
