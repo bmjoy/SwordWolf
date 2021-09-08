@@ -11841,11 +11841,11 @@ PrefabInstance:
       objectReference: {fileID: 338908571}
     - target: {fileID: 2583254743543292303, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.71134615
+      value: -0.7222028
       objectReference: {fileID: 0}
     - target: {fileID: 2583254743543292303, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7028418
+      value: 0.6916814
       objectReference: {fileID: 0}
     - target: {fileID: 3450761047440964100, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_Materials.Array.size
@@ -11881,15 +11881,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3450761047440964106, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 981.62726
+      value: 1045.9121
       objectReference: {fileID: 0}
     - target: {fileID: 3450761047440964106, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 757.44824
+      value: 730.13477
       objectReference: {fileID: 0}
     - target: {fileID: 3450761047440964106, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1707.2656
+      value: -1647.6942
       objectReference: {fileID: 0}
     - target: {fileID: 3450761047440964106, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11921,19 +11921,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4405647036942663379, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9028001
+      value: 0.8817333
       objectReference: {fileID: 0}
     - target: {fileID: 4405647036942663379, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.4300606
+      value: 0.47174814
       objectReference: {fileID: 0}
     - target: {fileID: 4722316819745371261, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.20466736
+      value: -0.17409065
       objectReference: {fileID: 0}
     - target: {fileID: 4722316819745371261, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9788316
+      value: -0.98472965
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 623cda9eabbc4544d93a7171d8720bd8, type: 3}
@@ -15423,6 +15423,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8635455072915542320, guid: 25e05c2e28533d64899fe7d565d316bd, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8467142776774038246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25e05c2e28533d64899fe7d565d316bd, type: 3}
 --- !u!114 &1089166326
@@ -21218,13 +21222,13 @@ MonoBehaviour:
   m_snowingHeight: 35
   m_snowFadeHeight: 50
   m_snowDuration: 0
-  m_snowWaitTime: 194.75378
+  m_snowWaitTime: 219.64204
   m_snowSampleStrength: 0
   m_enableRain: 1
   m_rainIntensity: 0
   m_rainSampleStrength: 0
   m_rainDuration: 0
-  m_rainWaitTime: 451.10242
+  m_rainWaitTime: 281.31198
   m_thunderLightColor: {r: 0, g: 0.6313726, b: 1, a: 1}
   m_thunderLightIntensity: 2
   m_thunderAudioSources:
@@ -22149,7 +22153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1478629338
 Light:
   m_ObjectHideFlags: 0

@@ -16,28 +16,28 @@ namespace Asakuma
         private Transform myTransform;
         private Vector3 cameraTransformPosition;
         public LayerMask ignoreLayers;
-        public LayerMask environmentLayer;
+        [SerializeField] private LayerMask environmentLayer;
 
         private Vector3 cameraFollowVelocity = Vector3.zero;
 
-        public static CameraHandler singleton;
+        private static CameraHandler singleton;
 
-        public float lookSpeed = 0.1f;
-        public float followSpeed = 0.1f;
-        public float pivotSpeed = 0.03f;
+        [SerializeField] private float lookSpeed = 0.1f;
+        [SerializeField] private float followSpeed = 0.1f;
+        [SerializeField] private float pivotSpeed = 0.03f;
 
         private float targetPosition;
         private float defaultPosition;
         private float lookAngle;
         private float pivotAngle;
-        public float minimumPivot = -35;
-        public float maximumPivot = 35;
+        [SerializeField] private float minimumPivot = -35;
+        [SerializeField] private float maximumPivot = 35;
 
-        public float cameraShereRradius = 0.2f;
-        public float cameraCollisionOffset = 0.2f;
-        public float minimumCollisionOffset = 0.2f;
-        public float lockedPivotPosition = 2.25f;
-        public float unlockedPivotPosition = 1.65f;
+        [SerializeField] private float cameraShereRradius = 0.2f;
+        [SerializeField] private float cameraCollisionOffset = 0.2f;
+        [SerializeField] private float minimumCollisionOffset = 0.2f;
+        [SerializeField] private float lockedPivotPosition = 2.25f;
+        [SerializeField] private float unlockedPivotPosition = 1.65f;
 
         public CharacterManager currentLockOnTarget;
 
@@ -45,7 +45,7 @@ namespace Asakuma
         public CharacterManager nearestLockOnTarget;
         public CharacterManager leftLockTarget;
         public CharacterManager rightLockTarget;
-        public float maximumLockOnDistance = 30;
+        [SerializeField] private float maximumLockOnDistance = 30;
 
 
         private void Awake()
@@ -68,8 +68,6 @@ namespace Asakuma
         public void FollowTarget(float delta)
         {
             Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
-            // Vector3 targetPosition = Vector3.Lerp(myTransform.position, targetTransform.position, delta / followSpeed);
-            //!  カメラがカクカクになるため修正
 
             myTransform.position = targetPosition;
 
@@ -143,108 +141,6 @@ namespace Asakuma
 
         public void HandleLockOn()
         {
-            #region user comment
-            //    availableTargets.Clear();
-
-            //    float shortestDistance = Mathf.Infinity;
-            //    float shortestDistanceOfLeftTarget = Mathf.Infinity;
-            //    float shortestDistanceOfRightTarget = Mathf.Infinity;
-
-            //    Collider[] colliders = Physics.OverlapSphere(targetTransform.position, 26);
-
-            //    if (colliders.Length > 0)
-            //    {
-            //        for (int i = 0; i < colliders.Length; i++)
-            //        {
-            //            CharacterManager character = colliders[i].GetComponent<CharacterManager>();
-
-            //            if (character != null)
-            //            {
-            //                Vector3 lockTargetDirection = character.transform.position - transform.position;
-
-            //                float distanceFromTarget = Vector3.Distance(transform.position, character.transform.position);
-            //                float viewableAngle = Vector3.Angle(lockTargetDirection, transform.forward);
-            //                RaycastHit hit;
-
-            //                //Make sure we don't lock onto ourselves and the target is on screen and we are close enough to lock on
-            //                if (character.transform.root != targetTransform.transform.root && viewableAngle > -50 && viewableAngle < 50 && distanceFromTarget <= maximumLockOnDistance)
-            //                {
-            //                    if (Physics.Linecast(playerManager.lockOnTransform.position, character.lockOnTransform.position, out hit))
-            //                    {
-            //                        Debug.DrawLine(playerManager.lockOnTransform.position, character.lockOnTransform.position);
-
-            //                        if (hit.transform.gameObject.layer == enviromentLayer)
-            //                        {
-            //                            //Cannot lock onto target, object in the way
-            //                        }
-            //                        else
-            //                        {
-            //                            availableTargets.Add(character);
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //        }
-
-            //        if (availableTargets.Count > 0)
-            //        {
-            //            for (int k = 0; k < availableTargets.Count; k++)
-            //            {
-            //                float distFromTarget = Vector3.Distance(transform.position, availableTargets[k].transform.position);
-
-            //                if (distFromTarget < shortestDistance)
-            //                {
-            //                    shortestDistance = distFromTarget;
-            //                    nearestLockOnTarget = availableTargets[k].lockOnTransform;
-            //                }
-
-            //                if (inputHandler.lockOnFlag)
-            //                {
-            //                    //This is the big change, from enemy position to player
-            //                    Vector3 relativePlayerPostion = transform.InverseTransformPoint(availableTargets[k].transform.position);
-
-            //                    var distanceFromLeftTarget = 1000f; //currentLockOnTarget.transform.position.x - availableTargets[k].transform.position.x;
-            //                    var distanceFromRightTarget = 1000f; //currentLockOnTarget.transform.position.x + availableTargets[k].transform.position.x;
-
-            //                    if (relativePlayerPostion.x < 0.00)
-            //                    {
-            //                        distanceFromLeftTarget = Vector3.Distance(currentLockOnTarget.position, availableTargets[k].transform.position);
-            //                    }
-
-            //                    else if (relativePlayerPostion.x > 0.00)
-            //                    {
-            //                        distanceFromRightTarget = Vector3.Distance(currentLockOnTarget.position, availableTargets[k].transform.position);
-            //                    }
-
-            //                    if (relativePlayerPostion.x < 0.00 && distanceFromLeftTarget < shortestDistanceOfLeftTarget)
-            //                    {
-            //                        shortestDistanceOfLeftTarget = distanceFromLeftTarget;
-            //                        leftLockTarget = availableTargets[k].lockOnTransform;
-            //                    }
-
-            //                    if (relativePlayerPostion.x > 0.00 && distanceFromRightTarget < shortestDistanceOfRightTarget)
-            //                    {
-            //                        shortestDistanceOfRightTarget = distanceFromRightTarget;
-            //                        rightLockTarget = availableTargets[k].lockOnTransform;
-            //                    }
-            //                }
-            //            }
-            //        }
-
-            //        else
-            //        {
-            //            Debug.Log("no lock on targets found A");
-            //        }
-            //    }
-
-            //    else
-            //    {
-            //        Debug.Log("no lock on targets found B");
-            //    }
-            //}
-
-            #endregion
-
             float shortestDistance = Mathf.Infinity;
             float shortestDistanceOfLeftTarget = -Mathf.Infinity;
             float shortestDistanceOfRightTarget = Mathf.Infinity;
@@ -293,10 +189,7 @@ namespace Asakuma
                 }
 
                 if (inputHandler.lockOnFlag)
-                {   //敵が右か左か確認
-                    //Vector3 relativeEnemyPosition = currentLockOnTarget.transform.InverseTransformPoint(availableTargets[k].transform.position);
-                    //var distanceFromLeftTarget = currentLockOnTarget.transform.position.x - availableTargets[k].transform.position.x;
-                    //var distanceFromRightTarget = currentLockOnTarget.transform.position.x + availableTargets[k].transform.position.x;
+                {
 
                     Vector3 relativeEnemyPosition = inputHandler.transform.InverseTransformPoint(availableTargets[k].transform.position);
                     var distanceFromLeftTarget = relativeEnemyPosition.x;

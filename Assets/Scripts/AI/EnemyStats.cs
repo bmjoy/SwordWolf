@@ -11,11 +11,11 @@ namespace Asakuma
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyBossManager enemyBossManager;
 
-        public LevelComplete levelComplete;
+        [SerializeField] private LevelComplete levelComplete;
         public UIEnemyHealthBar enemyHealthBar;
-        public int soulsAwardedOnDeath = 50;
+        public int soulsAwardedOnDeath { get; private set; } = 50;
         public bool isBoss;
-        public bool isDamaged = false;
+        public bool isDamaged { get; private set; } = false;
 
         private void Awake()
         {

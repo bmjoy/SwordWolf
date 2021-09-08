@@ -5,20 +5,20 @@ using UnityEngine;
 public class ResetAnimatorBool : StateMachineBehaviour
 {
 
-    public string isInvulnerable = "isInvulnerable";
-    public bool isInvulnerableStatus = false;
+    [SerializeField] private string isInvulnerable = "isInvulnerable";
+    [SerializeField] private bool isInvulnerableStatus = false;
 
-    public string isInteractingBool = "isInteracting";
-    public bool isInteractingStatus = false;
+    [SerializeField] private string isInteractingBool = "isInteracting";
+    [SerializeField] private bool isInteractingStatus = false;
 
-    public string isFiringSpellBool = "isFiringSpell";
-    public bool isFiringSpellStatus = false;
+    [SerializeField] private string isFiringSpellBool = "isFiringSpell";
+    [SerializeField] private bool isFiringSpellStatus = false;
 
-    public string isRotatingWithRootMotion = "isRotatingWithRootMotion";
-    public bool isRotatingWithRootMotionStatus = false;
+    [SerializeField] private string isRotatingWithRootMotion = "isRotatingWithRootMotion";
+    [SerializeField] private bool isRotatingWithRootMotionStatus = false;
 
-    public string canRotateBool = "canRotate";
-    public bool canRotateStatus = true;
+    [SerializeField] private string canRotateBool = "canRotate";
+    [SerializeField] private bool canRotateStatus = true;
 
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

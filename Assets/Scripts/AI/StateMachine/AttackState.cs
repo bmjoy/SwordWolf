@@ -41,7 +41,7 @@ namespace Asakuma
                 return this; //  ƒRƒ“ƒ{‚ğŒˆ‚ß‚é‚½‚ß‚Éã‚É–ß‚é
             }
 
-            return rotateTowardsTargetState;    
+            return rotateTowardsTargetState;
         }
 
 
@@ -83,7 +83,7 @@ namespace Asakuma
         {
             float comboChance = Random.Range(0, 100);
 
-            if (enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood )
+            if (enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood)
             {
                 if (currentAttack.comboAction != null)
                 {

@@ -9,12 +9,12 @@ namespace Asakuma
         public PursueTargetState pursueTargetState;
         public PlayerStats player;
 
-        public bool isSleeping;
-        public float detectionRadius = 2;
-        public string sleepAnimation;
-        public string wakeAnimation;
+        [SerializeField] private bool isSleeping;
+        [SerializeField] private float detectionRadius = 2;
+        [SerializeField] private string sleepAnimation;
+        [SerializeField] private string wakeAnimation;
 
-        public LayerMask detectionLayer;
+        [SerializeField] private LayerMask detectionLayer;
 
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)

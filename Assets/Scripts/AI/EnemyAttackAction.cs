@@ -7,16 +7,16 @@ namespace Asakuma
     [CreateAssetMenu(menuName = "A.I/Enemy Actions/attack Action")]
     public class EnemyAttackAction : EnemyAction
     {
-        public bool canCombo;
+        [SerializeField] private bool canCombo;
 
         public EnemyAttackAction comboAction;
-        public int attackScore = 3;
-        public float recoveryTime = 2;
+        public int attackScore { get; private set; } = 3;
+        public float recoveryTime { get; private set; } = 2f;
 
-        public float maximumAttackAngle = 35;
-        public float minimumAttackAngle = -35;
+        public float maximumAttackAngle { get; private set; } = 35f;
+        public float minimumAttackAngle { get; private set; } = -35f;
 
-        public float minimumDistanceNeededToAttack = 0;
-        public float maximumDistanceNeededToAttack = 3;
+        public float minimumDistanceNeededToAttack { get; private set; } = 0f;
+        public float maximumDistanceNeededToAttack { get; private set; } = 3f;
     }
 }

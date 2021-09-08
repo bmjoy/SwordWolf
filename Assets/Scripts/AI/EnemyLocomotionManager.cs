@@ -9,10 +9,10 @@ namespace Asakuma
         EnemyManager enemyManager;
         EnemyAnimatorManager enemyAnimatorManager;
 
-        public CapsuleCollider characterCollider;
-        public CapsuleCollider characterCollisionBlockerCollider;
+        [SerializeField] private CapsuleCollider characterCollider;
+        [SerializeField] private CapsuleCollider characterCollisionBlockerCollider;
 
-        public LayerMask detectionLayer;
+        [SerializeField] private LayerMask detectionLayer;
 
 
         private void Awake()
