@@ -81,7 +81,7 @@ namespace Asakuma
             {
                 if (inputHandler.twoHandFlag)
                 {
-                    backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);   //  move current left hand weapon to the back or disable it
+                    backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);   //  Œ»İ‚Ì¶è‚Ì•Ší‚ğ”w–Ê‚ÉˆÚ“®‚·‚é‚©–³Œø‚É‚·‚é
                     leftHandSlot.UnloadWeaponAndDestory();
                     animator.CrossFade(weaponItem.th_idle, 0.2f);
                 }

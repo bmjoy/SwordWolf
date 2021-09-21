@@ -26,14 +26,14 @@ namespace Asakuma
         public virtual void AttemptToCastSpell
             (PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)
         {
-            Debug.Log("You attempt to cast a spell");
+            //Debug.Log("You attempt to cast a spell");
 
         }
 
         public virtual void SuccessfullyCastSpell
             (PlayerAnimatorManager animatorHandler, PlayerStats playerStats, CameraHandler cameraHandler, WeaponSlotManager weaponSlotManager)
         {
-            Debug.Log("You succenssfully cast a spell");
+            //Debug.Log("You succenssfully cast a spell");
             playerStats.DeductFocusPoints(focusPointCost);
         }
     }

@@ -15,7 +15,7 @@ namespace Asakuma
             base.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
             GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, animatorHandler.transform);
             animatorHandler.PlayTargetAnimation(spellAnimation, true);
-            Debug.Log("Attempting to cast spell");
+            //Debug.Log("Attempting to cast spell");
         }
 
         public override void SuccessfullyCastSpell
@@ -24,7 +24,7 @@ namespace Asakuma
             base.SuccessfullyCastSpell(animatorHandler, playerStats, cameraHandler, weaponSlotManager);
             GameObject instantiatedSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
             playerStats.HealPlayer(healAmount);
-            Debug.Log("Spell cast success");
+            //Debug.Log("Spell cast success");
         }
     }
 } 

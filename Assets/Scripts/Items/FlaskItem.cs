@@ -25,15 +25,15 @@ namespace Asakuma
             GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
 
 
-            //  add health and fp
+            //  体力を回復させFX再生
             playerEffectsManager.currentParticleFX = recoveryFX;
             playerEffectsManager.amountBeHealed = healthRecoverAmount;
 
-            //  instantiate flask in hand and play drink anim
+            //  フラスコを持たせインスタンス化してドリンクanim再生
             playerEffectsManager.instantiatedFXModel = flask;
             weaponSlotManager.rightHandSlot.UnloadWeapon();
 
-            //  play recovery FX when/if we drink without being hit
+            //  ヒットせずに飲んでいる場合は/回復FXを再生する
         }
     }
 }

@@ -36,14 +36,14 @@ namespace Asakuma
 
             if (!randomDestinationSet)
             {
-                //  decide circling action
+                //  ù‰ñs“®‚ğŒˆ’è
                 randomDestinationSet = true;
                 DecideCirclingAction(enemyAnimatorManager);
             }
 
             HandleRotateTowardsTarget(enemyManager);  
 
-            //  Check for attack range
+            // UŒ‚‚ğŠm”F‚·‚é
             if (enemyManager.currentRecoveryTime <= 0 && attackState.currentAttack != null)
             {
                 randomDestinationSet = false;
@@ -124,7 +124,6 @@ namespace Asakuma
                     if (viewableAngle <= enemyAttackAction.maximumAttackAngle && viewableAngle >= enemyAttackAction.minimumAttackAngle)
                     {
                         maxScore += enemyAttackAction.attackScore;
-                        Debug.Log("max is " + maxScore);
                     }
                 }
             }

@@ -316,7 +316,6 @@ namespace Asakuma
         {
             if (criticalAttack_Input)
             {
-                Debug.Log("criticalAttackInput");
                 criticalAttack_Input = false;
                 playerAttacker.AttemptBackStabOrRiposte();
             }

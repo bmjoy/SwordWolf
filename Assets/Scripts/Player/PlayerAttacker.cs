@@ -263,7 +263,7 @@ namespace Asakuma
                     int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
-                    Debug.Log("backstab");
+                    //Debug.Log("backstab");
                     animatorHandler.PlayTargetAnimation("Back_Stab", true);
                     enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back_Stabbed", true);
 

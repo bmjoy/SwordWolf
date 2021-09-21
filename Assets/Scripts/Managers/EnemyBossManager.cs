@@ -33,11 +33,9 @@ namespace Asakuma
         public void UpdateBossHealthBar(int currentHealth, int maxHealth)
         {
             bossHealthBar.SetBossCurrentHealth(currentHealth);
-            Debug.Log("NOTphaseShift");
 
             if (currentHealth <= maxHealth / 2f && !bossCombatStanceState.hasPhaseShifted)
             {
-                Debug.Log("PhaseShift");
                 //bossCombatStanceState.hasPhaseShifted = true;
                 ShiftToSecondPhase();
             }
@@ -49,7 +47,6 @@ namespace Asakuma
             enemyAnimatorManager.anim.SetBool("isPhaseShifting", true);
             enemyAnimatorManager.PlayTargetAnimation("Phase_Shift", true);
             bossCombatStanceState.hasPhaseShifted = true;
-            Debug.Log("shifting");
         }
         //  handle swiching attack phase
     }

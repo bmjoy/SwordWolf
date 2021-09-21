@@ -50,7 +50,6 @@ namespace Asakuma
                 isDamaged = true;
 
             currentHealth = currentHealth - damage;
-            Debug.Log(currentHealth);
             enemyManager.damageSE.Play();
 
             if (!isBoss)

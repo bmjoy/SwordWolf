@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/RedirectLevel.unity
     guid: 4520f797011c2864aadf798723654996
   - enabled: 1
-    path: Assets/Scenes/Temple_1 2.unity
+    path: Assets/Scenes/Temple.unity
     guid: fb3fffdb695aa9e44b9192cc13a7c11b
   - enabled: 1
     path: Assets/Scenes/CreditLevel.unity

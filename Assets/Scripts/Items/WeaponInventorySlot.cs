@@ -43,9 +43,9 @@ namespace Asakuma
         {   
             if (uiManager.rightHandslot01Selected)
             {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[0]);   //  Add current item to inventory
-                playerInventory.weaponsInRightHandSlots[0] = item;  //  Equip this new inventory
-                playerInventory.weaponsInventory.Remove(item);  //  Remove this item from inventory
+                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[0]);   //  現在のアイテムを追加
+                playerInventory.weaponsInRightHandSlots[0] = item;  //  新しく入手したインベントリを装備する
+                playerInventory.weaponsInventory.Remove(item);  //  インベントリからこのアイテムを削除
             }
             else if (uiManager.rightHandslot02Selected)
             {
