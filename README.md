@@ -1,4 +1,4 @@
-# Sword Wolf
+# Sword Wolf  ![MIT](https://img.shields.io/github/license/asakuma3/SwordWolf)
 
 ![2021-09-15_204229](https://user-images.githubusercontent.com/75192388/136656284-46ca502f-5ba8-4ab0-906a-845461a2e828.jpg)
 
